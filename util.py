@@ -1,3 +1,5 @@
+import pandas as pd
+
 #FileID被各個ProductID開啟的次數的比例
 def get_file_product_count_percentage(df):
     dft = df[['FileID','ProductID']]
