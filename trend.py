@@ -1,4 +1,4 @@
-from trend_util import *
+from util import *
 x,y,test = get_data()
 train_ids = x.index
 test_ids = test.index
@@ -6,7 +6,7 @@ x_all = pd.concat([x,test],axis=0)
 x_all = x_all.fillna(-1)
 #best_gmm = best_gmm_cluster(x_all)
 #joblib.dump(best_gmm,'export/trend_best_gmm.pkl')
-best_gmm = joblib.load('export/trend_best_gmm.pkl')
+best_gmm = joblib.load('trend_best_gmm.pkl')
 x_all = best_gmm.fit(x_all)
 
 
@@ -47,4 +47,4 @@ print('trian roc: ',roc_auc_score(y,predicted))
 
 predicted = pd.Series(grid.predict_proba(test))
 result = pd.concat([ids,predicted],axis=1)
-result.to_csv('export/trend_predict_test.csv',index=False)
+result.to_csv('trend_predict_test.csv',index=False)
