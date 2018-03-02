@@ -1,4 +1,21 @@
+from lightgbm import LGBMRegressor
+from xgboost import XGBRegressor
 import pandas as pd
+import os
+from mlxtend.regressor import StackingRegressor
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression,Lasso,Ridge
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import mean_squared_error,roc_auc_score
+from sklearn.externals import joblib
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import StandardScaler,Normalizer,MinMaxScaler,LabelEncoder,Imputer
+from sklearn.feature_selection import VarianceThreshold
+#import matplotlib.pyplot as plt
+import copy
+import numpy as np
+from collections import Counter
+import warnings
 file_path = '/data/examples/trend/data/'
 rawdata_path = file_path + 'query_log/'
 
