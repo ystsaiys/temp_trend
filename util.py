@@ -53,7 +53,7 @@ def get_open_time_std(df):
 ############ model ############
 def get_data():
     cols = ['FileID','y']
-    df = pd.read_csv('export/trend_v1.csv')
+    df = pd.read_csv('trend_v1.csv')
     df = df.set_index('FileID')
     test = pd.read_csv(file_path+'testing-set.csv',header=None)
     train = pd.read_csv(file_path+'training-set.csv',header=None)
