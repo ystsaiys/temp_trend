@@ -11,7 +11,7 @@ from sklearn.metrics import roc_auc_score
 x,y,test = get_data()
 train_ids = x.index
 test_ids = test.index
-x_all = pd.concat([x,test],axis=0) 
+#x_all = pd.concat([x,test],axis=0) 
 #x_all = x_all.fillna(-1)
 #best_gmm = best_gmm_cluster(x_all)
 #joblib.dump(best_gmm,'export/trend_best_gmm.pkl')
