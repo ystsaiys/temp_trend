@@ -2,6 +2,7 @@ from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
 import pandas as pd
 import os
+from sklearn.feature_extraction.text import TfidfVectorizer
 from mlxtend.classifier import StackingClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression,Lasso,Ridge
@@ -68,9 +69,9 @@ def get_open_time_std(df):
 ############ etl ############
 
 ############ model ############
-def get_data():
+def get_data(version=4):
     cols = ['FileID','y']
-    df = pd.read_csv('trend_v1.csv')
+    df = pd.read_csv('trend_v%s.csv'%version)
     df = df.set_index('FileID')
     test = pd.read_csv(file_path+'testing-set.csv',header=None)
     train = pd.read_csv(file_path+'training-set.csv',header=None)
