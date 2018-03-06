@@ -22,6 +22,19 @@ rawdata_path = file_path + 'query_log/'
 
 ############ etl ############
 
+# get rid of cols which is high corr to other
+def get_lowcorr_df(dataset, threshold=0.95):
+    col_corr = set() # Set of all the names of deleted columns
+    corr_matrix = dataset.corr()
+    for i in range(len(corr_matrix.columns)):
+        for j in range(i):
+            if corr_matrix.iloc[i, j] >= threshold:
+                colname = corr_matrix.columns[i] # getting the name of column
+                col_corr.add(colname)
+                if colname in dataset.columns:
+                    dataset = dataset.drop(colname,axis=1)
+    return dataset
+
 def clean_df(df):
     df['ProductID'] = df['ProductID'].astype('str')
     df = df.replace(['055649'],['55649'])
